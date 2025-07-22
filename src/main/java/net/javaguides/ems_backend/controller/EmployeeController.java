@@ -33,9 +33,25 @@ public class EmployeeController {
     }
     // build rest api for finding the list of all employees
     @GetMapping("/get")
-    public List<EmployeeDto> getAllEmployee()
+    public ResponseEntity<List<EmployeeDto>> getAllEmployee()
     {
-        return employeeService.getAllEmployee();
+        List<EmployeeDto> employees=employeeService.getAllEmployee();
+        return ResponseEntity.ok(employees);
     }
+
+    //build rest api to update the user
+    @PutMapping("/update/{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id,@RequestBody EmployeeDto employeeDto )
+    {
+      EmployeeDto updatedemp=   employeeService.updateEmployee(id,employeeDto);
+        return ResponseEntity.ok(updatedemp);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteEmpoyee(@PathVariable("id") Long employeeid)
+    {
+        employeeService.deleteEmployee(employeeid);
+        return ResponseEntity.ok("Employee Deleted");
+    }
+
 
 }

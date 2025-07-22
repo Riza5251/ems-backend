@@ -44,5 +44,25 @@ public EmployeeDto createEmployee(EmployeeDto employeeDto)
         List<Employee> employees= employeeRepository.findAll();
         return employees.stream().map((employee)->EmployeeMapper.maptoemployeedto(employee)).collect(Collectors.toList());
     }
+
+    @Override
+    public EmployeeDto updateEmployee(Long id, EmployeeDto updatedEmployee) {
+    //first checking wether the employee exist or not
+        Employee employee = employeeRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("the user is not exisiting user"));
+        employee.setFirstname(updatedEmployee.getFirstname());
+        employee.setLastname(updatedEmployee.getLastname());
+        employee.setEmail(updatedEmployee.getEmail());
+        Employee updated = employeeRepository.save(employee);
+        return EmployeeMapper.maptoemployeedto(updated);
+
+    }
+
+    @Override
+    public void deleteEmployee(Long employeeid) {
+        employeeRepository.deleteById(employeeid);
+    }
+
+
 }
 

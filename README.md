@@ -1,8 +1,8 @@
-Employee Management System
+# Employee Management System
 
 A simple Employee Management System built using Spring Boot with a REST API, tested locally via Postman, and using MySQL as the database. This system allows basic CRUD operations for managing employee data.
 
-Project Overview
+# Project Overview
 
 This project is a RESTful Employee Management System where you can perform operations such as:
 
@@ -16,7 +16,7 @@ Delete an employee
 
 The backend is built with Spring Boot and the data is persisted in MySQL. Testing of the API is done locally using Postman.
 
-Features
+# Features
 
 CRUD operations for employees
 
@@ -26,7 +26,7 @@ Data validation for employee inputs
 
 Error handling for invalid requests
 
-Technologies Used
+# Technologies Used
 
 Backend: Spring Boot
 
